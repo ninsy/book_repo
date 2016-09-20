@@ -2,7 +2,7 @@ var repo;
 
 var router = {
     root: function(req, res) {
-        res.send("Hello world, mate!");
+        res.send("Hello world, mate! Uploaded stuff.");
     },
     getCount: function(req, res, next) {
         repo
