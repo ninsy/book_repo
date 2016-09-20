@@ -9,7 +9,14 @@ var router = {
             .findByIsbn(req.params.id)
             .then(function(result) {
                 if(result) {
-                    res.json({count: result})
+                    res.format({
+                        json: function() {
+                            res.json({count: result})
+                        },
+                        html: function() {
+                            res.send("<p>" + result + " copies left!</p>");
+                        }
+                    });
                 } else {
                     res.status(404).send({message: "Book with " + req.params.id + " doesnt exist."});
                 }
