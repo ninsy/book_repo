@@ -12,6 +12,12 @@ module.exports = function(repo) {
 
     app.use(middleware.logIncoming);
 
+    app.use(function(req, res, next) {
+        res.header('Access-Control-Allow-Origin', "*");
+        next();
+    });
+
+
     app.get("/", routes.root);
     app.get("/stock/:id", routes.getCount);
     app.get("/stocks", routes.getAll);
